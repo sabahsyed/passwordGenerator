@@ -18,7 +18,7 @@ function generatePassword() {
     // var easy = lowerCharSet + upperCharSet;
     // var medium = numberSet + lowerCharSet + upperCharSet;
     // var hard = specialCharSet + numberSet + lowerCharSet + upperCharSet;
-    var password,u,l,s;
+    var password,u,l,s,str;
     var result = [];
     var userCriteria = prompt("Hello, let's generate a unique password.Select one criteria from the following:\n 1. Easy \n 2.Medium \n 3. Hard");
     var length = prompt("Enter length of the password:\n ");
@@ -29,8 +29,10 @@ function generatePassword() {
           var l = String.fromCharCode(97 + (Math.floor(Math.random() * 26)));     //lower case success 
           result[i] =u.concat(l);
         }
+        
         password = result.toString();
-        return password.substring(0,length);
+        var r = password.replace(",","");
+        return r.substring(0,length);
       }
   
     function medium(){
@@ -41,7 +43,8 @@ function generatePassword() {
         result[i] = random + u.concat(l);
       }
       password = result.toString();
-      return password.substring(0,length);
+      var r = password.replace(",","");
+      return r.substring(0,length);
   
       }
   
@@ -56,11 +59,19 @@ function generatePassword() {
         result[i] = random +  u.concat(l).concat(s);
        
       }
-    password = result.toString();
-     return password.substring(0,length);
+      password = result.toString();
+      var r = password.replace(",","");
+      return r.substring(0,length);
     }
+    // function arrayToString(result){
+    //   for(var i = 1 ;i<length ; i++){
+    //     str += result[i];
+    //   }
+    //   console.log(str);
+    // }
+      
     
-      if(length < 8 || length > 128){
+    if(length < 8 || length > 128){
         alert("Sorry!Minimum Requirements not met.Password length atleast 8 characters!!");
       }
       else if(userCriteria == 1 &&  length <= 128){
