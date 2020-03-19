@@ -14,4 +14,4 @@ The password has 3 levels - Easy , Medium and Difficult . The various possble co
     Medium - Combination of all alphabets and numbers[0-9].
     Difficult - Combination of all alphabets, numbers[0-9] and special symbols.
 * Return appropriate message if invalid input. 
-# passwordGenerator
+
