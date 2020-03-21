@@ -14,16 +14,34 @@ function generatePassword() {
     var numberSet = "0123456789";
     var lowerCharSet = "abcdefghijklmnopqrstuvwxyz";
     var upperCharSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-     
-    // var easy = lowerCharSet + upperCharSet;
-    // var medium = numberSet + lowerCharSet + upperCharSet;
-    // var hard = specialCharSet + numberSet + lowerCharSet + upperCharSet;
     var password,u,l,s,str;
     var result = [];
+
+
     var userCriteria = prompt("Hello, let's generate a unique password.Select one criteria from the following:\n 1. Easy \n 2.Medium \n 3. Hard");
-    var length = prompt("Enter length of the password:\n ");
-  
-    function easy(){
+    if(userCriteria == 1 || userCriteria == 2 || userCriteria == 3){
+      var length = prompt("Enter length of the password:\n ");
+
+      if(length < 8 || length > 128){
+        alert("Sorry!Minimum Requirements not met.Password length atleast 8 characters!!");
+      }
+      else if(userCriteria == 1 &&  length <= 128){
+          password = easy();
+      }
+      else if(userCriteria == 2 && length >8 && length <128){
+          password = medium();
+
+      }
+      else if(userCriteria == 3 && length >8 && length <128){
+          password = hard();
+
+      }
+      else alert("Enter again!");
+    } else  
+      alert("Sorry! You must choose between \n 1. Easy \n 2.Medium \n 3.Hard")
+    
+    
+      function easy(){
         for(var i = 0;i<length ;i++){
           var u = String.fromCharCode(65 + (Math.floor(Math.random() * 26)));     //Upper case success
           var l = String.fromCharCode(97 + (Math.floor(Math.random() * 26)));     //lower case success 
@@ -54,42 +72,16 @@ function generatePassword() {
       var random = Math.floor(Math.random() * 10);                             //Success
       var u = String.fromCharCode(65 + (Math.floor(Math.random() * 26)));     //Upper case success
       var l = String.fromCharCode(97 + (Math.floor(Math.random() * 26)));     //lower case success 
-      var s = String.fromCharCode(33 + (Math.floor(Math.random() * 26)));     //Special char success 
-      
-        result[i] = random +  u.concat(l).concat(s);
+      var s1 = String.fromCharCode(33 + (Math.floor(Math.random() * 26)));    //Special char success 
+      var s2 = String.fromCharCode(91 + (Math.floor(Math.random() * 26)));
+        result[i] = random +  u.concat(l).concat(s1).concat(s2);
        
       }
       password = result.toString();
       var r = password.replace(",","");
       return r.substring(0,length);
     }
-    // function arrayToString(result){
-    //   for(var i = 1 ;i<length ; i++){
-    //     str += result[i];
-    //   }
-    //   console.log(str);
-    // }
-      
     
-    if(length < 8 || length > 128){
-        alert("Sorry!Minimum Requirements not met.Password length atleast 8 characters!!");
-      }
-      else if(userCriteria == 1 &&  length <= 128){
-            password = easy();
-        }else if(userCriteria == 2 && length >8 && length <128){
-            password = medium();
-  
-        }else if(userCriteria == 3 && length >8 && length <128){
-            password = hard();
-  
-        }else alert("Enter again!");
-  
-    
-        
-     
-    
-    
-  
   return password;
   
     }
@@ -114,22 +106,3 @@ function generatePassword() {
   
   
   
-  
-  
-  
-  
-  
-  
-  // for(var i=0 ; i< length ; i++){
-    // var randomNum = Math.floor(Math.random() * 10);           // Generates a random  number between 0-9
-    
-    // var l = Math.floor(Math.random() * 26);                   //Generates one upperCase alphabet
-    // lower =  String.fromCharCode(65 + l); 
-  
-    // var u = Math.floor(Math.random() * 26);                   // Generates one lowerCase alphabet
-    // upper=  String.fromCharCode(97+ u);
-    // } 
-    //return "sometext";
-    // return password;
-  
-   // password = (Math.random().toString(36).substring(2,10).toLowerCase() + Math.random().toString(36).substring(2,10)).toUpperCase() + Math.random().toFixed(36).substring(2, 10)

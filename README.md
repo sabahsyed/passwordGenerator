@@ -12,6 +12,6 @@ The password has 3 levels - Easy , Medium and Difficult . The various possble co
 * 3 levels- 
     Easy - Combination of lower and upper case alphabets.
     Medium - Combination of all alphabets and numbers[0-9].
-    Difficult - Combination of all alphabets, numbers[0-9] and special symbols.
+    Difficult - Combination of all alphabets, numbers[0-9] and special characters.
 * Return appropriate message if invalid input. 
 
